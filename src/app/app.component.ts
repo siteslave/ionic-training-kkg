@@ -25,7 +25,12 @@ export class AppComponent {
     this.title = 'xxx';
     this.showName('Angular')
     this.showFunction(() => { console.log('hello') }, 'ab','bb','cc');  
-    this.users = this.userService.getUsers();
+    this.userService.getUsers()
+      .then(data => {
+        this.users = <Array<IUser>>data;
+      }, err => {
+        console.error(err);
+      });
   }
 
   alertName() {

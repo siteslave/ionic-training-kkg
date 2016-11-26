@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
   
-  constructor() { }
+  constructor(private http: Http) { }
 
   getUsers() {
-    let users = [
-      { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Bill Gate', age: 30 }
-    ];
-
-    return users;
+    return new Promise((resolve, reject) => {
+      this.http.get('https://jsonplaceholder.typicode.com/users')
+        .map(res => res.json())
+        .subscribe(data => resolve(data), err => reject(err));
+    })
   }  
 }
