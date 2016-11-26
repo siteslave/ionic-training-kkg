@@ -6,10 +6,12 @@ import { HttpModule } from '@angular/http';
 import { UserService } from './user.service'
 
 import { AppComponent } from './app.component';
+import { ToupperPipe } from './toupper.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ToupperPipe
   ],
   imports: [
     BrowserModule,
