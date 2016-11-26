@@ -14,4 +14,12 @@ export class UserService {
         .subscribe(data => resolve(data), err => reject(err));
     })
   }  
+
+  getDetail(id: number) {
+    return new Promise((resolve, reject) => {
+      this.http.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .map(res => res.json())
+        .subscribe(data => resolve(data), err => reject(err));
+    })
+  }  
 }

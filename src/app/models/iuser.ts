@@ -8,5 +8,5 @@ export interface IUser {
 }
 
 export interface IUserDetail extends IUser {
-  group: string
+  group?: string
 }

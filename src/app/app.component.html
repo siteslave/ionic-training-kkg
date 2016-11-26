@@ -5,13 +5,16 @@
 
   <input type="text" [(ngModel)]="user.id">
   <input type="text" [(ngModel)]="user.name">
+  <input type="text" [(ngModel)]="user.email">
   <button type="button" (click)="alertName()">Click Me</button>
-
 
   <hr>
 
   <ul>
-    <li *ngFor="let user of users"> {{ user.id }} {{ user.name }}</li>
+    <li *ngFor="let user of users"> 
+      {{ user.id }} {{ user.name }}
+      <button type="button" (click)="getUserDetail(user.id)">Detail</button>
+      </li>
   </ul>
   <table border="1">
     <tr>

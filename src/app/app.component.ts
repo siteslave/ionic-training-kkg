@@ -14,7 +14,7 @@ export class AppComponent {
   age: number;
   fruits: Array<any> = [1, 2, 'xx'];
   users: Array<IUser>;
-  user: { id: number, name: string } = { id: null, name: null };
+  user: IUser;
   xxUser: IUserDetail;
 
   name: string;
@@ -22,6 +22,8 @@ export class AppComponent {
   public x = 30;
 
   constructor(private userService: UserService) {
+    this.user = { id: null, name: null, email: null };
+
     this.title = 'xxx';
     this.showName('Angular')
     this.showFunction(() => { console.log('hello') }, 'ab','bb','cc');  
@@ -31,7 +33,19 @@ export class AppComponent {
       }, err => {
         console.error(err);
       });
+    
+
   }
+
+  getUserDetail(id: number) {
+    this.userService.getDetail(id)
+      .then(data => {
+        this.user = <IUser>data;
+      }, err => {
+        console.error(err);
+      });
+  } 
+  
 
   alertName() {
     this.users.push(this.user);
