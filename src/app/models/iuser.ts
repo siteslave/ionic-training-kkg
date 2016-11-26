@@ -4,9 +4,15 @@ export interface IUser {
   username?: string,
   email?: string,
   age?: number,
-  groupId?: number
+  group_id?: number
 }
 
 export interface IUserDetail extends IUser {
   group?: string
+}
+
+export interface IHttpResult {
+  ok: boolean,
+  rows?: any,
+  err?: any
 }
