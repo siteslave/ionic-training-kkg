@@ -1,36 +1,31 @@
 import { Component } from '@angular/core';
+import { UserService } from './user.service';
+import { IUser, IUserDetail, IGroup } from './models';
 
 let xx = 'Test';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: []
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title: string = 'Hello';
   age: number;
   fruits: Array<any> = [1, 2, 'xx'];
-  users: Array<{ id: number, name: string, age?: number }>;
+  users: Array<IUser>;
   user: { id: number, name: string } = { id: null, name: null };
+  xxUser: IUserDetail;
 
   name: string;
 
   public x = 30;
 
-  constructor() {
+  constructor(private userService: UserService) {
     this.title = 'xxx';
     this.showName('Angular')
-    this.showFunction(() => { console.log('hello') }, 'ab','bb','cc');
-    this.users = [
-      {id: 1, name: 'John Doe'},
-      {id: 2, name: 'Bill Gate', age: 30},
-    ]    
-    // function hello() { 
-    //   console.log('hello')
-    // }
-
+    this.showFunction(() => { console.log('hello') }, 'ab','bb','cc');  
+    this.users = this.userService.getUsers();
   }
 
   alertName() {
